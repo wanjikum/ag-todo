@@ -1,6 +1,7 @@
 import React, {PropTypes} from "react";
 import {Link} from "react-router";
 import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
 import * as toDoActions from "./../../actions/toDoActions";
 
 class CreateToDo extends React.Component{
@@ -23,7 +24,7 @@ class CreateToDo extends React.Component{
     }
 
     onClickSave(){
-        this.props.dispatch(toDoActions.createToDo(this.state.toDoItem));
+        this.props.actions.createToDo(this.state.toDoItem);
     }
 
     toDoRow(toDo, index){
@@ -59,7 +60,7 @@ class CreateToDo extends React.Component{
 }
 
 CreateToDo.propTypes = {
-    dispatch: PropTypes.func.isRequired,
+    actions: PropTypes.object.isRequired,
     toDos: PropTypes.array.isRequired
 };
 function mapStateToProps(state, ownProps){
@@ -67,9 +68,12 @@ function mapStateToProps(state, ownProps){
         toDos: state.toDos
     };
 }
+function mapDispatchToProps(dispatch){
+    return{
+        actions: bindActionCreators(toDoActions, dispatch)
+    };
+}
 
-
-
-export default connect(mapStateToProps)(CreateToDo);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateToDo);
 
 
