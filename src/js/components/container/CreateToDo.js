@@ -14,7 +14,6 @@ class CreateToDo extends React.Component{
         };
         this.onToDochange = this.onToDochange.bind(this);
         this.onClickSave = this.onClickSave.bind(this);
-        this.toDoRow = this.toDoRow.bind(this);
     }
     onToDochange(event){
         const toDoItem = this.state.toDoItem;
