@@ -27,7 +27,26 @@ class CreateToDo extends React.Component{
     }
 
     toDoRow(toDo, index){
-        return <div key={index}>{toDo.title}</div>;
+        return (
+                <tr>
+                    <td>
+                        {toDo.id}
+                    </td>
+                    <td>
+                        {toDo.title}
+                    </td>
+                    <td className="col-sm-1">
+                        <button type="button" className="btn btn-default btn-primary">
+                            <span className="glyphicon glyphicon-edit"></span>
+                        </button>
+                    </td>
+                    <td className="col-sm-1">
+                        <button type="button" className="btn btn-default btn-danger">
+                            <span className="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </td>    
+                </tr>
+            );
     }
  
 
@@ -42,18 +61,31 @@ class CreateToDo extends React.Component{
                         onChange={this.onToDochange}
                         value={this.state.toDoItem.title}
                     />
-                </div>
-                <div className="row">
+                
                     <input
-                        className = "col-sm-offset-2 col-sm-2 btn btn-lg btn-primary"
+                        className = "col-sm-offset-1 col-sm-2 btn btn-lg btn-primary"
                         type="submit"
                         onClick={this.onClickSave}
                         value="save"
                     />
                 </div>
                 <h2>To Do Items</h2>
-                {this.props.toDos.map(this.toDoRow)}
+                <div className="table-responsive col-sm-10">
+                <table className="table table-bordered table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>To do title</th>
+                            <th>Delete</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {this.props.toDos.map(this.toDoRow)}
+                    </tbody>
+                </table>
             </div>
+        </div>
         );
     }
 }

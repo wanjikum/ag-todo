@@ -1,8 +1,11 @@
 import * as types from './actionTypes';
 
-export function createToDo(toDoItem){
+let nextToDoId = 0;
+export const createToDo =  (toDoItem) => {
+    toDoItem.id = nextToDoId++;
     return{
-        type: 'types.CREATE_TODO',
+        type: types.CREATE_TODO,
         toDoItem
+        
     }; 
 }

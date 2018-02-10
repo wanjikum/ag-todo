@@ -8,6 +8,7 @@ import {Router, browserHistory} from 'react-router';
 import routes from './routes.js';
 // import './styles/styles.css';
 import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './../node_modules/glyphicons/glyphicons.js';
 
 const store = configureStore();
 
