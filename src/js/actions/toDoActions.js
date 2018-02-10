@@ -1,7 +1,8 @@
+import * as types from './actionTypes';
+
 export function createToDo(toDoItem){
-    console.log("I am in the action creater");
     return{
-        type: 'CREATE_TODO',
+        type: 'types.CREATE_TODO',
         toDoItem
     }; 
 }
